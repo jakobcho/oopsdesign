@@ -1,0 +1,36 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">新增產品</h2>
+  </div>
+<%= simple_form_for [ :admin, @product ] , :html => { :class => 'form-horizontal'},
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  } do |f| %>
+  <div class="panel-body">
+    <div class="col-sm-6">
+      <legend> 基本資料 </legend>
+      <%= f.input :title, label: '產品名稱'%>
+      <%= f.input :pid, label: '產品編號'%>
+      <%= f.input :description, label: '產品描述'%>
+      <%= f.input :price, label: '售價'%>
+      <%= f.input :employee_price, label: '員工價' %>
+    </div>
+    <div class="col-sm-6">
+      <legend> 庫存資料 </legend>
+      <%= f.simple_fields_for :product_skus do |c| %>
+        <% render 'product_sku_fields', f: c %>
+      <% end %>
+      <div>
+        <%= link_to_add_association '新增庫存', f, :product_skus %>
+      </div>
+    </div>  
+  </div>
+  <div class="panel-body">
+    <%= f.submit "新增產品", :class => "btn btn-primary btn-lg pull-right", :disable_with => 'Submiting...'%>
+  </div>
+<% end %>
+</div>

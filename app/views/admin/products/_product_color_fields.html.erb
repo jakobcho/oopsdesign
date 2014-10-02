@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <%= f.association :color, :label_method => :to_label, label: '顏色' %>
+  <%= f.input :_destroy, as: :hidden %>
+  
+  <%= link_to_remove_association "移除此顏色", f , { class: "btn btn-primary btn-sm pull-right"}%>
+  <br>
+  <br>  
+</div>

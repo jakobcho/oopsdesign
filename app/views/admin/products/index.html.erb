@@ -1,0 +1,41 @@
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">產品列表</a></li>
+            <li><a href="#tab2" data-toggle="tab">庫存列表</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <br>
+      <div class="pull-left" style="padding-bottom: 20px;">
+        <%= link_to("新增產品", new_admin_product_path, :class => "btn btn-primary btn-sm") %>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>產品編號</th>
+            <th>產品名稱</th>
+            <th>產品描述</th>
+            <th>#</th>
+            <th>#</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+          <tr>
+            <td> <%= product.pid %> </td>
+            <td> <%= product.title %> </td>
+            <td> <%= product.description %></td>
+            <td> <%= link_to("查看庫存", admin_product_path(product)) %></td>
+            <td> <%= link_to("圖片管理", admin_product_product_skus_path(product)) %></td>
+            <td> <%= link_to("修改產品規格", edit_admin_product_path(product)) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab9">
+        xxoo
+    </div>
+</div>
+

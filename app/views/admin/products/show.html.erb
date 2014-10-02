@@ -1,0 +1,38 @@
+<div class="tabbable tabs-left">
+<div class="tab-content">
+  <legend> <%= "#{@product.pid} - #{@product.title}"%> </legend>
+    <div class="tab-pane active" id="tab1">
+      <div class="pull-left" style="padding-bottom: 20px;">
+        <%= link_to("新增庫存", new_admin_product_product_sku_path(@product), :class => "btn btn-primary btn-sm") %>
+      </div>
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>產品顏色</th>
+            <th>Size</th>
+            <th>庫存數量</th>
+            <th>已出售數量</th>
+            <th>查看明細</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <%= render :partial => "product_sku", :collection=> @product.product_skus.select(:color_id, :size, "sum(quantity) as quantity", "sum(sold_quantity) as sold_quantity").group("color_id, size").order("color_id, size").includes(:color), :as => "product_sku" %>
+
+      
+            <th></th>
+            <th>小計:</th>
+            <th><%= @product.product_skus.sum(:quantity, :condition => {:product_id => @product.id} ) %></th>
+            <th><%= @product.product_skus.sum(:sold_quantity, :condition => {:product_id => @product.id} ) %></th>
+            <th></th>
+        </tbody>
+      </table>
+
+
+    </div>
+    <div class="tab-pane" id="tab9">
+        xxoo
+    </div>
+</div>
+

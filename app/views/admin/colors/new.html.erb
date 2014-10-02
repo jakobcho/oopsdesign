@@ -1,0 +1,23 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">新增顏色</h2>
+  </div>
+<%= simple_form_for [ :admin, @color ] , :html => { :class => 'form-horizontal'},
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  } do |f| %>
+  <div class="panel-body">
+    <div class="col-sm-6">
+      <%= f.input :name, label: '顏色名稱' %>
+      <%= f.input :color_code, label: '色號' %>
+    </div>
+  </div>
+  <div class="panel-body">
+    <%= f.submit "新增顏色", :class => "btn btn-primary btn-lg pull-right", :disable_with => 'Submiting...'%>
+  </div>
+<% end %>
+</div>

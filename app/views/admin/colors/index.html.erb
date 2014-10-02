@@ -1,0 +1,26 @@
+<div class="tab-pane active" id="tab1">
+  <br>
+  <div class="pull-left" style="padding-bottom: 20px;">
+    <%= link_to("新增顏色", new_admin_color_path, :class => "btn btn-primary btn-sm") %>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>顏色名稱</th>
+        <th>色號</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @colors.each do |color| %>
+      <tr>
+        <td> <%= color.id %></td>
+        <td> <%= link_to(color.name, admin_color_path(color)) %> </td>
+        <td> <%= color.color_code %></td>
+        <td> <%= link_to("Edit", edit_admin_color_path(color)) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

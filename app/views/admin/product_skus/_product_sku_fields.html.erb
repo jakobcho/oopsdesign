@@ -1,0 +1,10 @@
+<div class="nested-fields">
+  <%= f.association :color, :label_method => :to_label, label: '顏色', collection: @product.colors%>
+  <%= f.input :size, label: 'Size' %>
+  <%= f.input :quantity, label: '數量' %>
+  <%= f.input :username, as: :hidden, :input_html => { :value => "#{current_user.username}" }%>
+  <%= f.input :_destroy, as: :hidden %>
+
+  &nbsp;&nbsp;&nbsp;
+  <%= link_to_remove_association "移除此庫存", f %>
+</div>
